@@ -1,0 +1,75 @@
+ gcc -g p1original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x7fc: file p1original.c, line 18.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p1original.c:18
+18  {
+(gdb) n
+20    input(&a, &b);
+(gdb) p a
+$1 = 21883
+(gdb) p b
+$2 = -1662415424
+(gdb) s
+input (a=0x7fff9ce98ccc, b=0x7fff9ce98cd0) at p1original.c:5
+5   printf("Enter 2 values to add\n");
+(gdb) n
+Enter 2 values to add
+6   scanf("%d %d", a, b);
+(gdb) n
+2
+3
+7   }
+(gdb) n
+main () at p1original.c:21
+21    add(a, b, &sum);
+(gdb) p a
+$3 = 2
+(gdb) p b
+$4 = 3
+(gdb) s
+add (a=2, b=3, sum=0x7fff9ce98cd4) at p1original.c:10
+10   *sum = a + b;
+(gdb) n
+11  }
+(gdb) n
+main () at p1original.c:22
+22    output(a, b, sum);
+(gdb) p a
+$5 = 2
+(gdb) p b
+$6 = 3
+(gdb) p sum
+$7 = 5
+(gdb) s
+output (a=2, b=3, sum=5) at p1original.c:14
+14  printf("Sum of %d and %d is %d", a, b, sum);
+(gdb) n
+15  }
+(gdb) n
+main () at p1original.c:23
+23  return 0;
+(gdb) n
+24  }(gdb) c
+Continuing.
+Sum of 2 and 3 is 5[Inferior 1 (process 133) exited normally]
+(gdb) q
