@@ -5,7 +5,7 @@ int input()
     int x;
     printf("Enter a value:\n");
     scanf("%d", &x);
-    return 0;
+    return x;
   }
 
 int cmp(int a, int b, int c)
