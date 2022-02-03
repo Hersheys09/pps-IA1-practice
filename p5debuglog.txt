@@ -1,0 +1,121 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x837: file p5original.c, line 32.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p5original.c:32
+32    n = input();
+(gdb) p n
+$1 = 0
+(gdb) s
+input () at p5original.c:4
+4   {
+(gdb) n
+6     printf("Enter the number to find square root of: ");
+(gdb) n
+7     scanf("%f", &x);
+(gdb) n
+Enter the number to find square root of: 36 
+8     return x;
+(gdb) n
+9   }
+(gdb) n
+main () at p5original.c:33
+33    sqrt_result = my_sqrt(n);
+(gdb) p n
+$2 = 36
+(gdb) p sqrt_result
+$3 = 0
+(gdb) s
+my_sqrt (n=36) at p5original.c:13
+13    float x=n/2;
+(gdb) n
+15    sqrt = 0.5*(x+(n/x));
+(gdb) n
+16    while((x-sqrt)>0.00001)
+(gdb) n
+18      x = sqrt;
+(gdb) p x
+$4 = 18
+(gdb) p n
+$5 = 36
+(gdb) n
+19      sqrt = 0.5*(x+(n/x));
+(gdb) n
+16    while((x-sqrt)>0.00001)
+(gdb) n
+18      x = sqrt;
+(gdb) n
+19      sqrt = 0.5*(x+(n/x));
+(gdb) n
+16    while((x-sqrt)>0.00001)
+(gdb) n
+18      x = sqrt;
+(gdb) p x
+$6 = 6.80000019
+(gdb) p n
+$7 = 36
+(gdb) n
+19      sqrt = 0.5*(x+(n/x));
+(gdb) n
+16    while((x-sqrt)>0.00001)
+(gdb) n
+18      x = sqrt;
+(gdb) p x
+$8 = 6.04705906
+(gdb) n
+19      sqrt = 0.5*(x+(n/x));
+(gdb) n
+16    while((x-sqrt)>0.00001)
+(gdb) n
+18      x = sqrt;
+(gdb) n
+19      sqrt = 0.5*(x+(n/x));
+(gdb) n
+16    while((x-sqrt)>0.00001)
+(gdb) n
+21    return sqrt;
+(gdb) p n
+$9 = 36
+(gdb) p x
+$10 = 6
+(gdb) n
+22  }
+(gdb) n
+main () at p5original.c:34
+34    output(n, sqrt_result);
+(gdb) p n
+$11 = 36
+(gdb) p sqrt_result
+$12 = 6
+(gdb) s
+output (n=36, sqrt_result=6) at p5original.c:26
+26    printf("Square root of %f is %f", n, sqrt_result);
+(gdb) n
+27  }
+(gdb) n
+main () at p5original.c:35
+35    return 0;
+(gdb) n
+36  }
+(gdb) c
+Continuing.
+Square root of 36.000000 is 6.000000[Inferior 1 (process 723) exited normally]
+(gdb) q
