@@ -1,4 +1,4 @@
-//#include <stdio.h>
+#include <stdio.h>
 
 void input_two_string(char *a, char *b)
 {
