@@ -1,4 +1,4 @@
-#include <stdio.h>
+//#include <stdio.h>
 
 int input_array_size()
 {
@@ -13,7 +13,7 @@ void input_array(int n, int a[n])
   for(int i=0; n>i; i++)
   {
     printf("Enter a number: ");
-    scanf("%d", a[i]);
+    scanf("%d", &a[i]);
   }
 }
 

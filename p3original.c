@@ -10,8 +10,8 @@ int input_n()
 
 int sum_n(int n)
 {
-  int sum;
-  for(i=0; n>i; i++)
+  int sum=0;
+  for(int i=0; n+1>i; i++)
   {
     sum = sum + i;
   }
@@ -32,7 +32,7 @@ int main()
 {
   int n, sum;
   n = input_n();
-  sum = sum_n();
+  sum = sum_n(n);
   output(n, sum);
   return 0;
 }

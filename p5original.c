@@ -1,4 +1,4 @@
-#include <stdio.h>
+//#include <stdio.h>
 
 float input()
 {
@@ -10,7 +10,15 @@ float input()
 
 float my_sqrt(float n)
 {
-
+  float x=n/2;
+  float sqrt;
+  sqrt = 0.5*(x+(n/x));
+  while((x-sqrt)>0.00001)
+  {
+    x = sqrt;
+    sqrt = 0.5*(x+(n/x));
+  }
+  return sqrt;
 }
 
 void output(float n, float sqrt_result)
