@@ -1,0 +1,91 @@
+ gcc -g p7original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x87c: file p7original.c, line 33.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p7original.c:33
+33    a = input_complex();
+(gdb) p a
+$1 = {real = 8.67530483e-19, imaginary = 3.07010481e-41}
+(gdb) p b
+$2 = {real = 7.8353004e-16, imaginary = 4.59163468e-41}
+(gdb) p c
+$3 = {real = 0, imaginary = 0}
+(gdb) s
+input_complex () at p7original.c:10
+10  {
+(gdb) n
+12    printf("Enter a Complex number:\n");
+(gdb) n
+Enter a Complex number:
+13    scanf("%f %f", &c.real, &c.imaginary);
+(gdb) n
+2
+3
+14    return c;
+(gdb) n
+15  }
+(gdb) n
+main () at p7original.c:34
+34    b = input_complex();
+(gdb) p a
+$4 = {real = 2, imaginary = 3}
+(gdb) p b
+$5 = {real = 7.8353004e-16, imaginary = 4.59163468e-41}
+(gdb) p c
+$6 = {real = 0, imaginary = 0}
+(gdb) n
+Enter a Complex number:
+4
+5
+35    c = add(a,b);
+(gdb) p a
+$7 = {real = 2, imaginary = 3}
+(gdb) p b
+$8 = {real = 4, imaginary = 5}
+(gdb) s
+add (a=..., b=...) at p7original.c:20
+20    c.real = a.real + b.real;
+(gdb) b
+Breakpoint 2 at 0x5595218007de: file p7original.c, line 20.
+(gdb) b
+Note: breakpoint 2 also set at pc 0x5595218007de.
+Breakpoint 3 at 0x5595218007de: file p7original.c, line 20.
+(gdb) n
+21    c.imaginary = a.imaginary + b.imaginary;
+(gdb) n
+22    return c;
+(gdb) p c
+$9 = {real = 6, imaginary = 8}
+(gdb) n
+23  }
+(gdb) n
+main () at p7original.c:36
+36    output(a,b,c);
+(gdb) s
+output (a=..., b=..., c=...) at p7original.c:27
+27    printf("The sum of complex number %f + %fi and %f + %fi is %f + %fi", a.real, a.imaginary, b.real, b.imaginary, c.real, c.imaginary); 
+(gdb) n
+28  }
+(gdb) c
+Continuing.
+The sum of complex number 2.000000 + 3.000000i and 4.000000 + 5.000000i is 6.000000 + 8.000000i[Inferior 1 (process 135) exited normally]
+(gdb) q
