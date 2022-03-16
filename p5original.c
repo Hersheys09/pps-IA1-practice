@@ -23,7 +23,7 @@ float my_sqrt(float n)
 
 void output(float n, float sqrt_result)
 {
-  printf("Square root of %f is %f", n, sqrt_result);
+  printf("Square root of %f is %f\n", n, sqrt_result);
 }
 
 int main()
